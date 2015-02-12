@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="urn:com:sentenial:origix:ws:usermgmnt-ws:wsdl" 
+	xmlns:usr="urn:com:sentenial:origix:ws:usermgmnt-ws"	
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="urn:com:sentenial:origix:ws:usermgmnt-ws:wsdl" xmlns:p="http://www.w3.org/2001/XMLSchema">
+	
+	<wsdl:types>
+		<xs:schema targetNamespace="urn:com:sentenial:origix:ws:usermgmnt-ws:wsdl"
+			xmlns:tns="urn:com:sentenial:origix:ws:usermgmnt-ws:wsdl"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			<xs:annotation>
+				<xs:documentation>
+					User Management Web Services
+				</xs:documentation>
+			</xs:annotation>
+
+			<xs:import namespace="urn:com:sentenial:origix:ws:usermgmnt-ws"
+				schemaLocation="usermgmnt-ws.xsd" />
+			<xs:import namespace="urn:com:sentenial:origix:ws:common:types"
+				schemaLocation="../common/types.xsd" />
+			
+		</xs:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="AddUserRequest">
+		<wsdl:part element="usr:AddUser" name="AddUserRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="AddUserResponse">
+		<wsdl:part element="usr:AddUserResponse" name="AddUserResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="EditUserRequest">
+		<wsdl:part element="usr:EditUser" name="EditUserRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="EditUserResponse">
+		<wsdl:part element="usr:EditUserResponse" name="EditUserResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ViewUserRequest">
+		<wsdl:part element="usr:ViewUser" name="ViewUserRequest" />
+	</wsdl:message>
+	<wsdl:message name="ViewUserResponse">
+		<wsdl:part element="usr:ViewUserResponse" name="ViewUserResponse"  />
+	</wsdl:message>
+
+	<wsdl:message name="ActivateUserRequest">
+		<wsdl:part element="usr:ActivateUser" name="ActivateUserRequest" />
+	</wsdl:message>
+	<wsdl:message name="ActivateUserResponse">
+		<wsdl:part element="usr:ActivateUserResponse" name="ActivateUserResponse"  />
+	</wsdl:message>
+
+	<wsdl:message name="DeactivateUserRequest">
+		<wsdl:part element="usr:DeactivateUser" name="DeactivateUserRequest" />
+	</wsdl:message>
+	<wsdl:message name="DeactivateUserResponse">
+		<wsdl:part element="usr:DeactivateUserResponse" name="DeactivateUserResponse"  />
+	</wsdl:message>
+
+	<wsdl:portType name="UserManagementWs">
+		<wsdl:operation name="AddUser">
+			<wsdl:input message="tns:AddUserRequest" name="AddUserRequest"/>
+			<wsdl:output message="tns:AddUserResponse" name="AddUserResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="EditUser">
+			<wsdl:input message="tns:EditUserRequest" name="EditUserRequest"/>
+			<wsdl:output message="tns:EditUserResponse" name="EditUserResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="ViewUser">
+			<wsdl:input message="tns:ViewUserRequest" name="ViewUserRequest"/>
+			<wsdl:output message="tns:ViewUserResponse" name="ViewUserResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="ActivateUser">
+			<wsdl:input message="tns:ActivateUserRequest" name="ActivateUserRequest"/>
+			<wsdl:output message="tns:ActivateUserResponse" name="ActivateUserResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="DeactivateUser">
+			<wsdl:input message="tns:DeactivateUserRequest" name="DeactivateUserRequest"/>
+			<wsdl:output message="tns:DeactivateUserResponse" name="DeactivateUserResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+		
+	<wsdl:binding name="UserManagementWsSoap11" type="tns:UserManagementWs">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="AddUser">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AddUserRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddUserResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		<wsdl:operation name="EditUser">
+			<soap:operation soapAction="" />
+			<wsdl:input name="EditUserRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="EditUserResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ViewUser">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ViewUserRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ViewUserResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>	
+		<wsdl:operation name="ActivateUser">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ActivateUserRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ActivateUserResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>	
+		<wsdl:operation name="DeactivateUser">
+			<soap:operation soapAction="" />
+			<wsdl:input name="DeactivateUserRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeactivateUserResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>	
+	</wsdl:binding>
+	
+	<wsdl:service name="UserManagementWsService">
+		<wsdl:port binding="tns:UserManagementWsSoap11" name="UserManagementWsSoap11">
+			<soap:address location="http://localhost:8080/origix/ws/service" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,148 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:com:sentenial:origix:ws:usermgmnt-ws"
+	xmlns="urn:com:sentenial:origix:ws:usermgmnt-ws"
+	xmlns:tns="urn:com:sentenial:origix:ws:usermgmnt-ws"
+	xmlns:t="urn:com:sentenial:origix:ws:common:types"
+	elementFormDefault="qualified" version="1.0-SNAPSHOT">
+	
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:types" 
+		schemaLocation="../common/types.xsd" />
+
+	<xs:annotation>
+		<xs:documentation>
+			User Management Web Services
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="AddUser" type="UserType" />
+	<xs:element name="AddUserResponse" type="UserResponseType" />
+	<xs:element name="EditUser" type="UserType" />
+	<xs:element name="EditUserResponse" type="UserResponseType" />
+	<xs:element name="ViewUser" type="UserIdType" />
+	<xs:element name="ViewUserResponse" type="UserResponseType" />
+	<xs:element name="ActivateUser" type="UserIdType" />
+	<xs:element name="ActivateUserResponse" type="UserResponseType" />
+	<xs:element name="DeactivateUser" type="UserIdType" />
+	<xs:element name="DeactivateUserResponse" type="UserResponseType" />
+	<xs:element name="RemoveUser" type="UserIdType" />
+	<xs:element name="RemoveUserResponse" type="UserResponseType" />
+	<xs:element name="UserReconciliation" type="UserStatusListType" />
+	<xs:element name="UserReconciliationResponse" type="UserResponseListType" />
+	
+	<xs:complexType name="UserIdType">
+		<xs:sequence>
+			<xs:element name="UsrNm" type="t:Max70AlphaNumForUsername"  minOccurs="0" maxOccurs="1" />
+			<xs:element name="UnqId" type="t:Max70AlphaNumForUsername" minOccurs="0" maxOccurs="1" />
+			<xs:element name="RlCrdnts" type="RoleCoordinatesType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="UserType">
+		<xs:complexContent>
+			<xs:extension base="UserIdType">
+				<xs:sequence>
+					<xs:element name="UsrTtle" type="UserTitleType" />
+					<xs:element name="UsrFrstNm" type="t:Max30AlphaNumNoSpace" />
+					<xs:element name="UsrLstNm" type="t:Max30AlphaNumNoSpace" />
+					<xs:element name="UsrPhnNmbr" type="t:Max30Number" minOccurs="0" />
+					<xs:element name="UsrMblNmbr" type="t:Max30Number" minOccurs="0" />
+					<xs:element name="UsrEmail" type="Email254" minOccurs="0" />
+					<xs:element name="UsrFaxNm" type="t:Max30Number" minOccurs="0" />
+					<xs:element name="CmmnNm" type="t:Max70AlphaNum" minOccurs="0" />
+					<xs:element name="UsrPsswrd" type="Password35Type" minOccurs="0" />
+					<xs:element name="UsrLng" type="LanguageType" minOccurs="0" default="EN"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="RoleCoordinatesType">
+		<xs:sequence>
+			<xs:element name="ExtOrgId" type="t:Max35TextMandatory" minOccurs="1" maxOccurs="1" />
+			<xs:element name="UsrRl" type="t:Max70TextMandatory" minOccurs="1" maxOccurs="1" />					
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="UserStatusType">
+		<xs:complexContent>
+			<xs:extension base="UserType">
+				<xs:sequence>
+					<xs:element name="UsrSts" type="StatusType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="UserResponseType">
+		<xs:complexContent>
+			<xs:extension base="UserStatusType">
+				<xs:sequence>
+					<xs:element name="returnCode" type="t:ReturnCode" />
+					<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="UserStatusListType">
+		<xs:sequence>
+			<xs:element name="item" type="UserStatusType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="UserResponseListType">
+		<xs:sequence>
+			<xs:element name="item" type="UserResponseType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="UserTitleType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Mr" />
+			<xs:enumeration value="Ms" />
+			<xs:enumeration value="Mrs" />
+			<xs:enumeration value="Miss" />
+			<xs:enumeration value="Dr" />
+			<xs:enumeration value="Prof" />
+			<xs:enumeration value="Fr" />
+			<xs:enumeration value="Rev" />
+			<xs:enumeration value="Bishop" />
+			<xs:enumeration value="Sr" />
+			<xs:enumeration value="None" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="StatusType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Activated" />
+			<xs:enumeration value="Deactivated" />
+			<xs:enumeration value="Removed" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="LanguageType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="EN" />
+			<xs:enumeration value="FR" />
+			<xs:enumeration value="NL" />
+			<xs:enumeration value="BE" />
+			<xs:enumeration value="ES" />
+			<xs:enumeration value="DE" />
+			<xs:enumeration value="PT" />
+			<xs:enumeration value="IT" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Email254">
+		<xs:restriction base="t:Email">
+			<xs:maxLength value="254" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Password35Type">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="8" />
+			<xs:maxLength value="35" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

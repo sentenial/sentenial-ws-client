@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:com:sentenial:origix:ws:accountvalidation-ws"
+	xmlns="urn:com:sentenial:origix:ws:accountvalidation-ws"
+	xmlns:tns="urn:com:sentenial:origix:ws:accountvalidation-ws"
+	xmlns:t="urn:com:sentenial:origix:ws:common:types"
+	xmlns:ct="urn:com:sentenial:origix:ws:common:commontypes"
+	elementFormDefault="qualified" version="1.0-SNAPSHOT">
+	
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:types" 
+		schemaLocation="../common/types.xsd" />
+		
+    <xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" 
+		schemaLocation="../common/commontypes.xsd" />		
+
+	<xs:annotation>
+		<xs:documentation>
+			Account Validation Web Services
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:complexType name="BaseValidateIBANRequest">
+		<xs:sequence>
+			<xs:element name="Iban" type="t:IbanIdentifier" minOccurs="1" maxOccurs="1"/>				
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="BaseValidateDomesticAccRequest">
+		<xs:sequence>
+			<xs:element name="DomesticAccountNumber" type="t:Max70Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CountryCode" type="t:IsoCountryCode" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DomesticBankCode" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="DomesticBranchCode" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DomesticCheckSum" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>	
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="BaseValidateAccResponse">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />			
+			<xs:element name="Iban" type="t:IbanIdentifier" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Bic" type="t:BicIdentifier" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CountryCode" type="t:IsoCountryCode" minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="DomesticAccountNumber" type="t:Max70Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DomesticBankCode" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>	
+			<xs:element name="DomesticBranchCode" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DomesticCheckSum" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>				
+		</xs:sequence>
+	</xs:complexType>	
+	  		
+	<xs:element name="BaseValidateIBANRequest" type="BaseValidateIBANRequest"/>
+	<xs:element name="BaseValidateDomesticAccRequest" type="BaseValidateDomesticAccRequest"/>
+	<xs:element name="BaseValidateAccResponse" type="BaseValidateAccResponse"/>
+
+	<xs:element name="ValidateIBANAccountRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BaseValidateIBANRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ValidateDomesticAccountRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BaseValidateDomesticAccRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="ValidateAccountResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BaseValidateAccResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	
+</xs:schema>

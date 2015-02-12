@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:com:sentenial:origix:ws:directdebit-ws"
+	xmlns="urn:com:sentenial:origix:ws:directdebit-ws"
+	xmlns:tns="urn:com:sentenial:origix:ws:directdebit-ws"
+	xmlns:d="urn:com:sentenial:origix:ws:directdebit"
+	xmlns:t="urn:com:sentenial:origix:ws:common:types"
+	elementFormDefault="qualified" version="1.0-SNAPSHOT">
+	
+	<xs:import namespace="urn:com:sentenial:origix:ws:directdebit" 
+		schemaLocation="directdebit.xsd" />
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:types" 
+		schemaLocation="../common/types.xsd" />
+	<xs:annotation>
+		<xs:documentation>
+			Directdebit Web Services
+		</xs:documentation>
+	</xs:annotation>
+	
+	<xs:element name="ViewDirectDebitRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestViewDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ViewDirectDebitResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseViewDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RevokeDirectDebitRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestRevokeDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RevokeDirectDebitResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseRevokeDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>		
+	<xs:element name="CancelDirectDebitRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestCancelDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CancelDirectDebitResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseCancelDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>		
+	<xs:element name="ListDirectDebitRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestListDirectDebits">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ListDirectDebitResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseListDirectDebits">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="ActivateRevokedDirectDebitRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestActivateRevokedDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ActivateRevokedDirectDebitResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseActivateRevokedDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RevokeAllDirectDebitsRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestRevokeAllDirectDebits">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RevokeAllDirectDebitsResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseRevokeAllDirectDebits">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="ListFailingDirectDebitsRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestListFailedDirectDebits">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ListFailingDirectDebitsResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseListFailedDirectDebits">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RepresentFailedDirectDebitRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestRepresentFailedDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RepresentFailedDirectDebitResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseRepresentFailedDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AddSinglePaymentRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestSinglePayment">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="AddSinglePaymentResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseSinglePayment">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ReverseDirectDebitRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:RequestReverseDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ReverseDirectDebitResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="d:ResponseReverseDirectDebit">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

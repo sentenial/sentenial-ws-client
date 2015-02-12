@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:com:sentenial:origix:ws:directdebit"
+	xmlns="urn:com:sentenial:origix:ws:directdebit"
+	xmlns:tns="urn:com:sentenial:origix:ws:directdebit"
+	xmlns:t="urn:com:sentenial:origix:ws:common:types"
+	xmlns:c="urn:com:sentenial:origix:ws:common:commontypes"
+	elementFormDefault="qualified" version="1.0-SNAPSHOT">
+
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:types" 
+		schemaLocation="../common/types.xsd" />
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" 
+		schemaLocation="../common/commontypes.xsd" />	
+
+		
+	<!-- Account -->
+	<xs:complexType name="PaymentScheduleRef">
+		<xs:sequence>
+			<xs:element name="ScheduleId" type="t:Max19Number" minOccurs="0" maxOccurs="1" /> 			
+		</xs:sequence>
+	</xs:complexType>
+	
+		<!-- Account -->
+	<xs:complexType name="RequestRevokeAllDirectDebits">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor"/>
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ScheduleId" type="t:Max19Number" minOccurs="0" maxOccurs="1" />
+			<xs:element name="OperationRsn" type="t:Max140Text" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ResponseRevokeAllDirectDebits">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor"/>
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>			
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RequestActivateRevokedDirectDebit">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor" />
+			<xs:element name="MandateInfo" type="c:MandateInfo"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="PmtEndToEndId" type="t:Max35Text"
+				minOccurs="1" maxOccurs="1" />
+			<xs:element name="PmtDate" type="t:IsoDate" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="PmtAmt" type="t:Max15DecimalNumber"
+				maxOccurs="1" minOccurs="0">
+			</xs:element>
+			<xs:element name="RemittanceInfo" type="t:Max140Text" maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ResponseActivateRevokedDirectDebit">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor" />
+			<xs:element name="MandateInfo" type="c:MandateInfo"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="RemittanceInfo" type="t:Max140Text"
+				maxOccurs="1" minOccurs="0">
+			</xs:element>
+			<xs:element name="PmtAmt" type="t:Max15DecimalNumber" maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RequestListFailedDirectDebits">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Text" minOccurs="1" maxOccurs="1"/> 
+			<xs:element name="RtxCreateDate" type="t:IsoDate" minOccurs="1" maxOccurs="1" />			
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ResponseListFailedDirectDebits">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="CreditorRef" type="t:Max35Text" minOccurs="1" maxOccurs="1"/> 
+			<xs:element name="RtxCreateDate" type="t:IsoDate" minOccurs="1" maxOccurs="1" />
+			<xs:element name="FailedPmntDtls" type="FailedPmntDtls"  minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="FailedPmntDtls">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor"/>
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PaymentScheduleRef" type="PaymentScheduleRef" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="RjctDtls" type="RjctDtls" minOccurs="1" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RjctDtls">
+		<xs:sequence>
+			<xs:element name="RjctRsn" type="t:Max4Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RjctDesc" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RjctType" type="t:Max6Text" minOccurs="1" maxOccurs="1"/>			
+		</xs:sequence>	
+	</xs:complexType>
+	
+	<xs:complexType name="RequestRepresentFailedDirectDebit">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor"/>
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="OrgnlPmtEndToEndId" type="t:Max35Text"/>
+			<xs:element name="PmtEndToEndId" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RepresentationDt" type="t:IsoDate" minOccurs="0" maxOccurs="1" />
+			<xs:element name="RepresentationFee" type="t:Max15DecimalNumber" minOccurs="0" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ResponseRepresentFailedDirectDebit">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor"/>
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PaymentScheduleRef" type="PaymentScheduleRef" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="RequestRevokeDirectDebit">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor" minOccurs="1" maxOccurs="1" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PmtEndToEndId" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OperationRsn" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseRevokeDirectDebit">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>			
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+		
+	<xs:complexType name="RequestCancelDirectDebit">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor" minOccurs="1" maxOccurs="1" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PmtEndToEndId" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OperationRsn" type="t:CancelDirectDebitReasonCode" minOccurs="1" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseCancelDirectDebit">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>			
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+		
+	<xs:complexType name="RequestViewDirectDebit">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor" minOccurs="1" maxOccurs="1" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PmtEndToEndId" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>					
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseViewDirectDebit">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>			
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RequestListDirectDebits">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor" minOccurs="1" maxOccurs="1" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ScheduleId" type="t:Max19Number" minOccurs="0" maxOccurs="1" />
+			<xs:element name="PmtStatus" type="t:PaymentStatus" minOccurs="0" maxOccurs="1" />
+			<xs:element name="PmtFromDate" type="t:IsoDate" minOccurs="0" maxOccurs="1" />
+			<xs:element name="PmtToDate" type="t:IsoDate" minOccurs="0" maxOccurs="1" />			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseListDirectDebits">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PaymentScheduleInfo" type="c:PaymentScheduleInfo" minOccurs="0" maxOccurs="1" /> 
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RequestSinglePayment">
+		<xs:sequence>
+		  <xs:element name="Creditor" type="c:Creditor"/>
+		  <xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+		  <xs:element name="PmtDate" type="t:IsoDate" />				                            
+		  <xs:element name="PmtAmt" type="t:Max15DecimalNumber" />		                            
+		  <xs:element name="PmtEndToEndId" type="t:Max35AlphaNumNoSpace" minOccurs="0" maxOccurs="1"/>		
+		  <xs:element name="RemittanceInfo" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>		
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseSinglePayment">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor"/>
+		    <xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo"/>	
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="RequestReverseDirectDebit">
+		<xs:sequence>
+			<xs:element name="Creditor" type="c:Creditor" minOccurs="1" maxOccurs="1" />
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PmtEndToEndId" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OperationRsn" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseReverseDirectDebit">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="c:Creditor" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="MandateInfo" type="c:MandateInfo" minOccurs="0" maxOccurs="1"/>			
+			<xs:element name="DirectDebitInfo" type="c:DirectDebitInfo" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

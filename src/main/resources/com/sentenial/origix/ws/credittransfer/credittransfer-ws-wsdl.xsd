@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:com:sentenial:origix:ws:credittransfer-ws:wsdl"
+	xmlns:tns="urn:com:sentenial:origix:ws:credittransfer-ws:wsdl"
+	xmlns:psws="urn:com:sentenial:origix:ws:credittransfer-ws"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:annotation>
+		<xs:documentation>
+			Credittransfer Web Services
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="urn:com:sentenial:origix:ws:credittransfer-ws" 
+		schemaLocation="credittransfer-ws.xsd" />
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:types" 
+		schemaLocation="../common/types.xsd" />
+
+</xs:schema>

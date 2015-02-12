@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:com:sentenial:origix:ws:paymentschedule-ws"
+	xmlns="urn:com:sentenial:origix:ws:paymentschedule-ws"
+	xmlns:tns="urn:com:sentenial:origix:ws:paymentschedule-ws"
+	xmlns:t="urn:com:sentenial:origix:ws:common:types"
+	xmlns:ct="urn:com:sentenial:origix:ws:common:commontypes"
+	elementFormDefault="qualified" version="1.0-SNAPSHOT">
+	
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:types" 
+		schemaLocation="../common/types.xsd" />
+		
+    <xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" 
+		schemaLocation="../common/commontypes.xsd" />		
+
+	<xs:annotation>
+		<xs:documentation>
+			PaymentSchedule Web Services
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:complexType name="PaymentScheduleRequest" abstract="true">
+		<xs:sequence>
+		    <xs:element name="Creditor" type="ct:Creditor"/>
+			<xs:element name="MandateInfo" type="ct:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PaymentScheduleInfo" type="ct:PaymentScheduleInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PaymentScheduleResponse" abstract="true">
+		<xs:sequence>
+		    <xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Creditor" type="ct:Creditor"/>
+			<xs:element name="MandateInfo" type="ct:MandateInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PaymentScheduleInfo" type="ct:PaymentScheduleInfo"/>
+			<xs:element name="DirectDebitInfo" type="ct:DirectDebitInfo"/>	
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="PaymentScheduleRequest" type="PaymentScheduleRequest"/>
+	
+	<xs:element name="PaymentScheduleResponse" type="PaymentScheduleResponse"/>
+		
+	<xs:element name="AddPaymentScheduleRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="PaymentScheduleRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	
+	<xs:element name="AddPaymentScheduleResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="PaymentScheduleResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	
+	<xs:element name="EditPaymentScheduleRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="PaymentScheduleRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	
+	<xs:element name="EditPaymentScheduleResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="PaymentScheduleResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+</xs:schema>

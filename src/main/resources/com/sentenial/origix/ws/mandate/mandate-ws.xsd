@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="urn:com:sentenial:origix:ws:mandate-ws" 
+           xmlns="urn:com:sentenial:origix:ws:mandate-ws" 
+           xmlns:tns="urn:com:sentenial:origix:ws:mandate-ws" 
+           xmlns:m="urn:com:sentenial:origix:ws:mandate" 
+           xmlns:t="urn:com:sentenial:origix:ws:common:types"
+           elementFormDefault="qualified" version="1.0">
+
+  <xs:import namespace="urn:com:sentenial:origix:ws:mandate" schemaLocation="mandate.xsd" />
+  <xs:import namespace="urn:com:sentenial:origix:ws:common:types" schemaLocation="../common/types.xsd" />
+  <xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" schemaLocation="../common/commontypes.xsd" />
+
+
+  <xs:annotation>
+    <xs:documentation>Mandate Web Services</xs:documentation>
+  </xs:annotation>
+
+  <xs:complexType name="MandateRequest" abstract="true">
+    <xs:sequence>
+      <xs:element name="Mandate" type="m:RequestMandate" />
+      <xs:element name="RequestInfo" type="m:RequestInfo" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MandateResponse" abstract="true">
+    <xs:sequence>
+      <xs:element name="returnCode" type="t:ReturnCode" />
+      <xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Mandate" type="m:ResponseMandate" minOccurs="0" maxOccurs="1" />
+      <xs:element name="RequestInfo" type="m:RequestInfo" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="MandateResponse" type="MandateResponse" />
+
+  <xs:element name="MandateRequest" type="MandateRequest" />
+
+  <xs:element name="AddMandateRequest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateRequest">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="AddMandateResponse">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateResponse">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="EditMandateRequest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateRequest">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="EditMandateResponse">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateResponse">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ViewMandateRequest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateRequest">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ViewMandateResponse">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateResponse">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CancelMandateRequest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateRequest">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CancelMandateResponse">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateResponse">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SuspendMandateRequest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateRequest">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SuspendMandateResponse">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateResponse">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ReactivateSuspendedMandateRequest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateRequest">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ReactivateSuspendedMandateResponse">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateResponse">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="ActivateMandateRequest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateRequest">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ActivateMandateResponse">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="MandateResponse">
+          <xs:sequence />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

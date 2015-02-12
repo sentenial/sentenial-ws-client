@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="urn:com:sentenial:origix:ws:mandate" 
+           xmlns="urn:com:sentenial:origix:ws:mandate" 
+           xmlns:tns="urn:com:sentenial:origix:ws:mandate" 
+           xmlns:t="urn:com:sentenial:origix:ws:common:types" 
+           xmlns:ct="urn:com:sentenial:origix:ws:common:commontypes"
+           elementFormDefault="qualified" version="1.0">
+
+  <xs:import namespace="urn:com:sentenial:origix:ws:common:types" schemaLocation="../common/types.xsd" />
+  <xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" schemaLocation="../common/commontypes.xsd" />
+
+
+  <!-- Account -->
+  <xs:complexType name="CreditorAccount">
+    <xs:sequence>
+      <xs:element name="Iban" type="t:IbanIdentifier" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Bic" type="t:BicIdentifier" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DebtorAccount">
+    <xs:sequence>
+      <xs:element name="Iban" type="t:IbanIdentifier" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Bic" type="t:BicIdentifier" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticAccountNumber" type="t:Max70Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticBranchCode" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticBankCode" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticCheckSum" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AccountCountry" type="t:IsoCountryCode" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Mandate Info : mandate ID, debtor ID -->
+  <xs:complexType name="RequestMandateInfo">
+    <xs:sequence>
+      <xs:element name="NewMandateId" type="t:Max35Text" minOccurs="0" maxOccurs="1" /> <!-- Mandate SEPA Reference -->
+      <xs:element name="MandateId" type="t:Max35Text" minOccurs="0" maxOccurs="1" /> <!-- Original Mandate SEPA Reference, only used for edit -->
+      <xs:element name="ContractRef" type="t:Max35Text" minOccurs="0" maxOccurs="1" /> <!-- Mandate Contract Reference -->
+      <xs:element name="NewDomesticMandateId" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticMandateId" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticMandateCountry" type="t:IsoCountryCode" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Type" type="t:MandateType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MandateOperationReason" type="t:Max140Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticOriginatorNumber" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ResendMandateForSignature" type="t:SignatureResubmitRequiredRule" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MigratingMandate" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SignatureDate" type="t:IsoDate" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SignatureLocation" type="t:Max70Text" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ResponseMandateInfo">
+    <xs:sequence>
+      <xs:element name="NewMandateId" type="t:Max35Text" minOccurs="0" maxOccurs="1" /> <!-- Mandate SEPA Reference -->
+      <xs:element name="MandateId" type="t:Max35Text" minOccurs="0" maxOccurs="1" /> <!-- Original Mandate SEPA Reference -->
+      <xs:element name="ContractRef" type="t:Max35Text" minOccurs="0" maxOccurs="1" /> <!-- Mandate Contract Reference -->
+      <xs:element name="NewDomesticMandateId" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticMandateId" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticMandateCountry" type="t:IsoCountryCode" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Type" type="t:MandateType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SignatureDate" type="t:IsoDate" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SignatureLocation" type="t:Max70Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UserId" type="xs:token" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CreationDate" type="t:IsoDate" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Status" type="t:MandateStatus" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MandateOperationReason" type="t:Max140Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DomesticOriginatorNumber" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ResendMandateForSignature" type="t:SignatureResubmitRequiredRule" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MigratingMandate" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TotalCollected" type="t:DecimalNumber" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TotalInFlight" type="t:DecimalNumber" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Debtor Details : debtor name, debtor address (2 lines * 70 characters), country code, Phone -->
+  <xs:complexType name="Debtor">
+    <xs:sequence>
+      <xs:element name="Name" type="t:Max70Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Address" type="SepaAddress" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Language" type="t:CommunicationLanguage" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Email" type="t:Max254Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="PhoneNumber" type="t:Max30Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MobileNumber" type="t:Max30Text" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SepaAddress">
+    <xs:sequence>
+      <xs:element name="Line1" type="t:Max70Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Line2" type="t:Max70Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Town" type="t:Max70Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="PostCode" type="t:Max16Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="State" type="t:Max70Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Country" type="t:IsoCountryCode" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Mandate -->
+
+  <xs:complexType name="ResponseMandate">
+    <xs:sequence>
+      <xs:element name="Format" type="t:DomesticFormat" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Creditor" type="ct:Creditor" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Debtor" type="Debtor" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MandateInfo" type="ResponseMandateInfo" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DebtorAccount" type="DebtorAccount" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CreditorAccount" type="CreditorAccount" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MandateSource" type="t:MandateSource" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequestMandate">
+    <xs:sequence>
+      <xs:element name="Format" type="t:DomesticFormat" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Creditor" type="ct:Creditor" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Debtor" type="Debtor" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MandateInfo" type="RequestMandateInfo" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DebtorAccount" type="DebtorAccount" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CreditorAccount" type="CreditorAccount" minOccurs="0" maxOccurs="1" />
+      <xs:element name="OmitPdf" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MandateRequestMode" type="t:MandateRequestMode" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SelfPrintMandate" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="MandateSource" type="t:MandateSource" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequestInfo">
+    <xs:sequence>
+      <xs:element name="AuthMethod" type="t:AuthMethod" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AuthToken" type="t:Max35Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AuthTokenPhoneNo" type="t:Max30Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AuthTokenEmail" type="t:Max254Text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="IpAddress" type="t:IpAddress" minOccurs="0" maxOccurs="1" />
+      <xs:element name="GeographicLocation" type="t:Max70Text" minOccurs="0" maxOccurs="1" />            
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

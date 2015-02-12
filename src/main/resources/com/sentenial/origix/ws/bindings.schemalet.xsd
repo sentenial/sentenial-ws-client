@@ -1,0 +1,124 @@
+<xs:schema elementFormDefault="qualified" version="1.0"
+	targetNamespace="eombeans-schemalet"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:version="2.0">
+	<xs:annotation>
+		<xs:appinfo>
+					
+			<jaxb:globalBindings>
+				<jaxb:javaType name="java.util.Calendar" xmlType="xs:date"
+					parseMethod="com.sentenial.origix.ws.helpers.DateConverter.parseDate"
+					printMethod="com.sentenial.origix.ws.helpers.DateConverter.printDate" />
+
+				<jaxb:javaType name="java.util.Calendar" xmlType="xs:dateTime"
+					parseMethod="com.sentenial.origix.ws.helpers.DateConverter.parseDateTime"
+					printMethod="com.sentenial.origix.ws.helpers.DateConverter.printDateTime" />
+			</jaxb:globalBindings>
+ 
+
+			<jaxb:bindings schemaLocation="common/adapters.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.adapters" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>			
+ 			
+			<jaxb:bindings schemaLocation="system/ping.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.system.ping" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="common/types.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.common.types" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="mandate/mandate.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.mandate" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="mandate/mandate-ws.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.mandate" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="mandate/mandate-ws-wsdl.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.mandate" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="directdebit/directdebit.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.directdebit" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="directdebit/directdebit-ws.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.directdebit" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="directdebit/directdebit-ws-wsdl.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.directdebit" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>			
+			
+			<jaxb:bindings schemaLocation="paymentschedule/paymentschedule-ws.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.paymentschedule" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="paymentschedule/paymentschedule-ws-wsdl.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.paymentschedule" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="credittransfer/credittransfer-ws.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.credittransfer" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="credittransfer/credittransfer-ws-wsdl.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.credittransfer" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="usermgmnt/usermgmnt-ws.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.usermgmnt" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+
+			<jaxb:bindings schemaLocation="usermgmnt/usermgmnt-ws-wsdl.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.usermgmnt" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="accountvalidation/accountvalidation-ws.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.accountvalidation" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+			<jaxb:bindings schemaLocation="accountvalidation/accountvalidation-ws-wsdl.xsd">
+				<jaxb:schemaBindings>
+					<jaxb:package name="com.sentenial.origix.ws.accountvalidation" />
+				</jaxb:schemaBindings>
+			</jaxb:bindings>
+			
+		</xs:appinfo>
+	</xs:annotation>
+</xs:schema>

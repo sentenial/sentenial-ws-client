@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="urn:com:sentenial:origix:ws:system:ping:wsdl" 
+	xmlns:sch1="urn:com:sentenial:origix:ws:system:ping"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:sch0="urn:com:sentenial:origix:ws:system:ping:wsdl"
+	targetNamespace="urn:com:sentenial:origix:ws:system:ping:wsdl">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:p="urn:com:sentenial:origix:ws:system:ping" 
+			attributeFormDefault="unqualified"
+			elementFormDefault="unqualified"
+			targetNamespace="com:sentenial:origix:ws:system:ping:wsdl">
+			
+			<xs:annotation>
+				<xs:documentation>
+					Ping WSDL
+				</xs:documentation>
+			</xs:annotation>			
+			<xs:import namespace="urn:com:sentenial:origix:ws:system:ping" 
+				schemaLocation="ping.xsd" />			
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="PingResponse">
+		<wsdl:part element="sch1:PingResponse" name="PingResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="PingRequest">
+		<wsdl:part element="sch1:PingRequest" name="PingRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="Ping">
+		<wsdl:operation name="Ping">
+			<wsdl:input message="tns:PingRequest" name="PingRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:PingResponse" name="PingResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PingSoap11" type="tns:Ping">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="Ping">
+			<soap:operation soapAction="" />
+			<wsdl:input name="PingRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="PingResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PingService">
+		<wsdl:port binding="tns:PingSoap11" name="PingSoap11">
+			<soap:address location="http://localhost:8080/origix/ws/service" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

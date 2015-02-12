@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="urn:com:sentenial:origix:ws:paymentschedule-ws:wsdl" 
+	xmlns:sch3="urn:com:sentenial:origix:ws:paymentschedule-ws"
+	xmlns:sch1="urn:com:sentenial:origix:ws:common:types"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch0="urn:com:sentenial:origix:ws:paymentschedule-ws:wsdl"
+	targetNamespace="urn:com:sentenial:origix:ws:paymentschedule-ws:wsdl">
+	<wsdl:types>
+		<xs:schema targetNamespace="urn:com:sentenial:origix:ws:paymentschedule-ws:wsdl"
+			xmlns:tns="urn:com:sentenial:origix:ws:paymentschedule-ws:wsdl" 
+			xmlns:mws="urn:com:sentenial:origix:ws:paymentschedule-ws" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			<xs:annotation>
+				<xs:documentation>
+					PaymentSchedule Web Services
+		</xs:documentation>
+			</xs:annotation>
+			<xs:import namespace="urn:com:sentenial:origix:ws:paymentschedule-ws"
+				schemaLocation="paymentschedule-ws.xsd" />
+			<xs:import namespace="urn:com:sentenial:origix:ws:common:types"
+				schemaLocation="../common/types.xsd" />
+		</xs:schema>
+
+	</wsdl:types>
+	<wsdl:message name="AddPaymentScheduleRequest">
+		<wsdl:part element="sch3:AddPaymentScheduleRequest" name="AddPaymentScheduleRequest"/>
+	</wsdl:message>
+	<wsdl:message name="AddPaymentScheduleResponse">
+		<wsdl:part element="sch3:AddPaymentScheduleResponse" name="AddPaymentScheduleResponse"/>
+	</wsdl:message>
+	<wsdl:message name="EditPaymentScheduleRequest">
+		<wsdl:part element="sch3:EditPaymentScheduleRequest" name="EditPaymentScheduleRequest"/>
+	</wsdl:message>
+	<wsdl:message name="EditPaymentScheduleResponse">
+		<wsdl:part element="sch3:EditPaymentScheduleResponse" name="EditPaymentScheduleResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="PaymentScheduleWs">
+		<wsdl:operation name="AddPaymentSchedule">
+			<wsdl:input message="tns:AddPaymentScheduleRequest" name="AddPaymentScheduleRequest"/>
+			<wsdl:output message="tns:AddPaymentScheduleResponse" name="AddPaymentScheduleResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="EditPaymentSchedule">
+			<wsdl:input message="tns:EditPaymentScheduleRequest" name="EditPaymentScheduleRequest"/>
+			<wsdl:output message="tns:EditPaymentScheduleResponse" name="EditPaymentScheduleResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PaymentScheduleWsSoap11" type="tns:PaymentScheduleWs">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="AddPaymentSchedule">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AddPaymentScheduleRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddPaymentScheduleResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>	
+		<wsdl:operation name="EditPaymentSchedule">
+			<soap:operation soapAction="" />
+			<wsdl:input name="EditPaymentScheduleRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="EditPaymentScheduleResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>			
+	</wsdl:binding>
+	<wsdl:service name="PaymentScheduleWsService">
+		<wsdl:port binding="tns:PaymentScheduleWsSoap11" name="PaymentScheduleWsSoap11">
+			<soap:address location="http://localhost:8080/origix/ws/service" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

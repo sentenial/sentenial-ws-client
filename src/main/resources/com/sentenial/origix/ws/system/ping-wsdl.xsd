@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:com:sentenial:origix:ws:system:ping:wsdl"
+	xmlns:tns="urn:com:sentenial:origix:ws:system:ping:wsdl"
+	xmlns:ping="urn:com:sentenial:origix:ws:system:ping"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:annotation>
+		<xs:documentation>
+			Ping WSDL
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="urn:com:sentenial:origix:ws:system:ping"
+		schemaLocation="ping.xsd" />
+
+</xs:schema>

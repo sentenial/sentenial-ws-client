@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:com:sentenial:origix:ws:credittransfer-ws"
+	xmlns="urn:com:sentenial:origix:ws:credittransfer-ws"
+	xmlns:tns="urn:com:sentenial:origix:ws:credittransfer-ws"
+	xmlns:t="urn:com:sentenial:origix:ws:common:types"
+	xmlns:ct="urn:com:sentenial:origix:ws:common:commontypes"
+	elementFormDefault="qualified" version="1.0-SNAPSHOT">
+	
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:types" 
+		schemaLocation="../common/types.xsd" />
+		
+    <xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" 
+		schemaLocation="../common/commontypes.xsd" />		
+
+	<xs:annotation>
+		<xs:documentation>
+			Credit Transfer Web Services
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:complexType name="BeneficiaryRequest" abstract="true">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BnfcryNm" type="t:Max70Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PostalAddress" type="PostalAddress" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryDscOfPurp" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ContactInfo" type="ContactInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BeneficiaryAccount" type="BeneficiaryAccount" minOccurs="0" maxOccurs="1"/>					
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="BeneficiaryEditRequest" abstract="true">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BnfcryNm" type="t:Max70Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PostalAddress" type="PostalAddress" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryDscOfPurp" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ContactInfo" type="ContactInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryIban" type="t:Max35TextMandatory" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="BeneficiaryViewRequest" abstract="true">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			
+			<xs:element name="BnfcryIban" type="t:IbanIdentifier" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="BeneficiaryResponse" abstract="true">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BnfcryNm" type="t:Max70Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PostalAddress" type="PostalAddress" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryDscOfPurp" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ContactInfo" type="ContactInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BeneficiaryAccount" type="BeneficiaryAccount" minOccurs="0" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CreditTransferRequest" abstract="true">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="AccountDetails" type="TransferAccountDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PaymentInfo" type="PaymentInfo" minOccurs="1" maxOccurs="1"/>						
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CreditTransferResponse" abstract="true">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CreditTransfer" type="CreditTransferDetails" minOccurs="0" maxOccurs="1"/>						
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CreditTransferViewRequest" abstract="true">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PmtEndToEndId" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>						
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CreditTransferViewResponse" abstract="true">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CreditTransfer" type="CreditTransferDetails" minOccurs="0" maxOccurs="unbounded"/>						
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CreditTransferRecallResponse" abstract="true">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CreditTransfer" type="CreditTransferDetails" minOccurs="0" maxOccurs="1"/>						
+			<xs:element name="OperationRsn" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CreditTransferListRequest" abstract="true">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="AccountDetails" type="ListTransferAccountDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PmtStatus" type="t:PaymentStatus" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CreditTransferListResponse" abstract="true">
+		<xs:sequence>
+			<xs:element name="returnCode" type="t:ReturnCode" minOccurs="1" maxOccurs="1" />
+			<xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1" />
+			<xs:element name="CreditTransfer" type="CreditTransferDetails" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="CreditTransferRecallRequest" abstract="true">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Number" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PmtEndToEndId" type="t:Max35TextMandatory" minOccurs="1" maxOccurs="1"/>						
+			<xs:element name="OperationRsn" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="FailedCreditTransferRequest">
+		<xs:sequence>
+			<xs:element name="CreditorRef" type="t:Max35Text" minOccurs="1" maxOccurs="1"/> 
+			<xs:element name="RtxCreateDate" type="t:IsoDate" minOccurs="1" maxOccurs="1" />			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="FailedCreditTransferResponse">
+		  <xs:sequence>
+            <xs:element name="returnCode" type="t:ReturnCode" />
+            <xs:element name="returnDesc" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="CreditorRef" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="RtxCreateDate" type="t:IsoDate" minOccurs="1" maxOccurs="1" />
+            <xs:element name="FailedPmntDtls" type="FailedCtDtls"  minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:complexType name="FailedCtDtls">
+        <xs:sequence>
+            <xs:element name="CreditTransfer" type="CreditTransferDetails" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="RjctDtls" type="RjctDtls" minOccurs="1" maxOccurs="1"/>           
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:complexType name="RjctDtls">
+        <xs:sequence>
+            <xs:element name="RjctRsn" type="t:Max4Text" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="RjctDesc" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="RjctType" type="t:Max6Text" minOccurs="1" maxOccurs="1"/>           
+        </xs:sequence>   
+    </xs:complexType>
+	
+	
+	
+	<xs:element name="BeneficiaryRequest" type="BeneficiaryRequest"/>
+	<xs:element name="BeneficiaryEditRequest" type="BeneficiaryEditRequest"/>
+	<xs:element name="BeneficiaryViewRequest" type="BeneficiaryViewRequest"/>
+	
+	<xs:element name="CreditTransferRequest" type="CreditTransferRequest"/>
+	<xs:element name="CreditTransferViewRequest" type="CreditTransferViewRequest"/>
+	<xs:element name="CreditTransferListRequest" type="CreditTransferListRequest"/>
+	<xs:element name="CreditTransferRecallRequest" type="CreditTransferRecallRequest"/>
+	
+	<xs:element name="BeneficiaryResponse" type="BeneficiaryResponse"/>
+	<xs:element name="CreditTransferResponse" type="CreditTransferResponse"/>
+	<xs:element name="CreditTransferListResponse" type="CreditTransferListResponse"/>
+	<xs:element name="CreditTransferViewResponse" type="CreditTransferViewResponse"/>
+	
+	<xs:element name="CreditTransferRecallResponse" type="CreditTransferRecallResponse"/>
+	
+	<xs:element name="FailedCreditTransferRequest" type="FailedCreditTransferRequest"/>
+	<xs:element name="FailedCreditTransferResponse" type="FailedCreditTransferResponse"/>		
+	
+	<xs:element name="AddBeneficiaryRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BeneficiaryRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="AddBeneficiaryResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BeneficiaryResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="EditBeneficiaryRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BeneficiaryEditRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="EditBeneficiaryResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BeneficiaryResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ViewBeneficiaryRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BeneficiaryViewRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="ViewBeneficiaryResponse">
+	<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="BeneficiaryResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+		
+	</xs:element>
+	
+	<xs:element name="AddCreditTransferRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="CreditTransferRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="AddCreditTransferResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="CreditTransferResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+		
+	<xs:element name="ViewCreditTransferRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="CreditTransferViewRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ViewCreditTransferResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="CreditTransferViewResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ListFailedCreditTransferRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="FailedCreditTransferRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ListFailedCreditTransferResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="FailedCreditTransferResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>		
+	
+	<xs:element name="ListCreditTransferRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="CreditTransferListRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ListCreditTransferResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="CreditTransferListResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	
+	<xs:element name="RecallCreditTransferRequest">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="CreditTransferRecallRequest">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="RecallCreditTransferResponse">
+		<xs:complexType>
+			<xs:complexContent>
+	            <xs:extension base="CreditTransferRecallResponse">
+	                <xs:sequence/>
+	            </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+		
+		
+	<xs:complexType name="CreditTransferDetails">
+		<xs:sequence>
+			<xs:element name="AccountDetails" type="TransferAccountDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PaymentInfo" type="PaymentInfoResponse" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PmtStatus" type="t:BeneficiaryPaymentStatus" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>		
+	
+	<xs:complexType name="TransferAccountDetails">
+		<xs:sequence>
+			<xs:element name="OrgntrIban" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BnfcryIban" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ListTransferAccountDetails">
+		<xs:sequence>
+			<xs:element name="OrgntrIban" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryIban" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PaymentInfo">
+		<xs:sequence>
+			<xs:element name="PmtDate" type="t:IsoDate" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PmtAmt" type="t:Max15DecimalNumber" minOccurs="1" maxOccurs="1"/>			
+			<xs:element name="PmtEndToEndId" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RemittanceInfo" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PaymentInfoResponse">
+		<xs:sequence>
+			<xs:element name="PmtDate" type="t:IsoDate" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PmtAmt" type="t:Max15DecimalNumber" minOccurs="1" maxOccurs="1"/>			
+			<xs:element name="PmtEndToEndId" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="RemittanceInfo" type="t:Max140Text" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PostalAddress">
+		<xs:sequence>
+			<xs:element name="BnfcryAddrLn1" type="t:Max70EPCImplAllowed" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryAddrLn2" type="t:Max70EPCImplAllowed" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryTwn" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcrySt" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryPstCd" type="t:Max16EPCImplAllowed" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryCntry" type="t:IsoCountryCode" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>	
+	</xs:complexType>
+	
+	<xs:complexType name="ContactInfo">
+		<xs:sequence>
+			<xs:element name="BnfcryPhoneNumber" type="t:Max30Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryMobileNumber" type="t:Max30Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryEmail" type="t:Max254Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryLng" type="t:BeneficiaryLanguage" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>	
+	</xs:complexType>
+	
+	<xs:complexType name="AccountInfo">
+		<xs:sequence>
+			<xs:element name="BnfcryBic" type="t:Max11Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryIban" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>			
+	</xs:complexType>
+	
+	<xs:complexType name="BeneficiaryAccount">
+		<xs:sequence>
+			<xs:element name="AccountInfo" type="AccountInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DomAccountInfo" type="DomAccountInfo" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>			
+	</xs:complexType>
+	
+	
+	
+	<xs:complexType name="EditAccountInfo">
+		<xs:sequence>
+			<xs:element name="BnfcryBic" type="t:Max11Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryIban" type="t:Max35Text" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="NewBnfcryIban" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>			
+	</xs:complexType>
+	
+	<xs:complexType name="DomAccountInfo">
+		<xs:sequence>
+			<xs:element name="BnfcryAccntCntry" type="t:IsoCountryCode" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryBnkCd" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>		
+			<xs:element name="BnfcryBrnchCd" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryDomAccNum" type="t:Max70Text" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BnfcryDomChkSm" type="t:Max35Text" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>	
+	</xs:complexType>
+
+
+	
+</xs:schema>

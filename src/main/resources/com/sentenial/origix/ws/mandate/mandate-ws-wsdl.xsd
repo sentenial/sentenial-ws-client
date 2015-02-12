@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:com:sentenial:origix:ws:mandate-ws:wsdl" 
+           xmlns:tns="urn:com:sentenial:origix:ws:mandate-ws:wsdl" 
+           xmlns:m="urn:com:sentenial:origix:ws:mandate" 
+           xmlns:mws="urn:com:sentenial:origix:ws:mandate-ws" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:annotation>
+    <xs:documentation>
+      Mandate Web Services
+		</xs:documentation>
+  </xs:annotation>
+
+  <xs:import namespace="urn:com:sentenial:origix:ws:mandate" schemaLocation="mandate.xsd" />
+  <xs:import namespace="urn:com:sentenial:origix:ws:mandate-ws" schemaLocation="mandate-ws.xsd" />
+  <xs:import namespace="urn:com:sentenial:origix:ws:common:types" schemaLocation="../common/types.xsd" />
+  <xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" schemaLocation="../common/commontypes.xsd" />
+
+</xs:schema>

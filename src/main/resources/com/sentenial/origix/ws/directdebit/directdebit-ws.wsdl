@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="urn:com:sentenial:origix:ws:directdebit-ws:wsdl" xmlns:sch3="urn:com:sentenial:origix:ws:directdebit-ws"
+	xmlns:sch2="urn:com:sentenial:origix:ws:directdebit" xmlns:sch1="urn:com:sentenial:origix:ws:common:types"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch0="urn:com:sentenial:origix:ws:directdebit-ws:wsdl"
+	targetNamespace="urn:com:sentenial:origix:ws:directdebit-ws:wsdl">
+	<wsdl:types>
+		<xs:schema targetNamespace="urn:com:sentenial:origix:ws:directdebit-ws:wsdl"
+			xmlns:tns="urn:com:sentenial:origix:ws:directdebit-ws:wsdl" xmlns:m="urn:com:sentenial:origix:ws:directdebit"
+			xmlns:mws="urn:com:sentenial:origix:ws:directdebit-ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			<xs:annotation>
+				<xs:documentation>
+					DirectDebit Web Services
+				</xs:documentation>
+			</xs:annotation>
+
+			<xs:import namespace="urn:com:sentenial:origix:ws:directdebit"
+				schemaLocation="directdebit.xsd" />
+			<xs:import namespace="urn:com:sentenial:origix:ws:directdebit-ws"
+				schemaLocation="directdebit-ws.xsd" />
+			<xs:import namespace="urn:com:sentenial:origix:ws:common:types"
+				schemaLocation="../common/types.xsd" />				
+			<xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes"
+				schemaLocation="../common/commontypes.xsd" />	
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="ViewDirectDebitRequest">
+		<wsdl:part element="sch3:ViewDirectDebitRequest" name="ViewDirectDebitRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ViewDirectDebitResponse">
+		<wsdl:part element="sch3:ViewDirectDebitResponse" name="ViewDirectDebitResponse"/>
+	</wsdl:message>	
+	<wsdl:message name="RevokeDirectdebitRequest">
+		<wsdl:part element="sch3:RevokeDirectDebitRequest" name="RevokeDirectDebitRequest"/>
+	</wsdl:message>
+	<wsdl:message name="RevokeDirectdebitResponse">
+		<wsdl:part element="sch3:RevokeDirectDebitResponse" name="RevokeDirectDebitResponse"/>
+	</wsdl:message>		
+	<wsdl:message name="CancelDirectdebitRequest">
+		<wsdl:part element="sch3:CancelDirectDebitRequest" name="CancelDirectDebitRequest"/>
+	</wsdl:message>
+	<wsdl:message name="CancelDirectdebitResponse">
+		<wsdl:part element="sch3:CancelDirectDebitResponse" name="CancelDirectDebitResponse"/>
+	</wsdl:message>
+	<wsdl:message name="ListDirectdebitRequest">
+		<wsdl:part element="sch3:ListDirectDebitRequest" name="ListDirectDebitRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ListDirectdebitResponse">
+		<wsdl:part element="sch3:ListDirectDebitResponse" name="ListDirectDebitResponse"/>
+	</wsdl:message>
+	<wsdl:message name="ActivateRevokedDirectDebitRequest">
+		<wsdl:part element="sch3:ActivateRevokedDirectDebitRequest" name="ActivateRevokedDirectDebitRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ActivateRevokedDirectDebitResponse">
+		<wsdl:part element="sch3:ActivateRevokedDirectDebitResponse" name="ActivateRevokedDirectDebitResponse"/>
+	</wsdl:message>		
+	<wsdl:message name="RevokeAllDirectDebitsRequest">
+		<wsdl:part element="sch3:RevokeAllDirectDebitsRequest" name="RevokeAllDirectDebitsRequest"/>
+	</wsdl:message>
+	<wsdl:message name="RevokeAllDirectDebitsResponse">
+		<wsdl:part element="sch3:RevokeAllDirectDebitsResponse" name="RevokeAllDirectDebitsResponse"/>
+	</wsdl:message>	
+	<wsdl:message name="ListFailingDirectDebitsRequest">
+		<wsdl:part element="sch3:ListFailingDirectDebitsRequest" name="ListFailingDirectDebitsRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ListFailingDirectDebitsResponse">
+		<wsdl:part element="sch3:ListFailingDirectDebitsResponse" name="ListFailingDirectDebitsResponse"/>
+	</wsdl:message>	
+	<wsdl:message name="RepresentFailedDirectDebitRequest">
+		<wsdl:part element="sch3:RepresentFailedDirectDebitRequest" name="RepresentFailedDirectDebitRequest"/>
+	</wsdl:message>
+	<wsdl:message name="RepresentFailedDirectDebitResponse">
+		<wsdl:part element="sch3:RepresentFailedDirectDebitResponse" name="RepresentFailedDirectDebitResponse"/>
+	</wsdl:message>
+	<wsdl:message name="AddSinglePaymentResponse">
+		<wsdl:part element="sch3:AddSinglePaymentResponse" name="AddSinglePaymentResponse"/>
+	</wsdl:message>	
+	<wsdl:message name="AddSinglePaymentRequest">
+		<wsdl:part element="sch3:AddSinglePaymentRequest" name="AddSinglePaymentRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="ReverseDirectdebitRequest">
+		<wsdl:part element="sch3:ReverseDirectDebitRequest" name="ReverseDirectDebitRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ReverseDirectdebitResponse">
+		<wsdl:part element="sch3:ReverseDirectDebitResponse" name="ReverseDirectDebitResponse"/>
+	</wsdl:message>
+	
+	
+	<wsdl:portType name="DirectdebitWs">
+		<wsdl:operation name="ViewDirectDebit">
+			<wsdl:input message="tns:ViewDirectDebitRequest" name="ViewDirectDebitRequest"/>
+			<wsdl:output message="tns:ViewDirectDebitResponse" name="ViewDirectDebitResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="RevokeDirectdebit">
+			<wsdl:input message="tns:RevokeDirectdebitRequest" name="RevokeDirectdebitRequest"/>
+			<wsdl:output message="tns:RevokeDirectdebitResponse" name="RevokeDirectdebitResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="CancelDirectdebit">
+			<wsdl:input message="tns:CancelDirectdebitRequest" name="CancelDirectdebitRequest"/>
+			<wsdl:output message="tns:CancelDirectdebitResponse" name="CancelDirectdebitResponse"/>
+		</wsdl:operation>		
+		<wsdl:operation name="ListDirectdebit">
+			<wsdl:input message="tns:ListDirectdebitRequest" name="ListDirectdebitRequest"/>
+			<wsdl:output message="tns:ListDirectdebitResponse" name="ListDirectdebitResponse"/>
+		</wsdl:operation>		
+		<wsdl:operation name="ActivateRevokedDirectDebit">
+			<wsdl:input message="tns:ActivateRevokedDirectDebitRequest" name="ActivateRevokedDirectDebitRequest"/>
+			<wsdl:output message="tns:ActivateRevokedDirectDebitResponse" name="ActivateRevokedDirectDebitResponse"/>
+		</wsdl:operation>		
+		<wsdl:operation name="RevokeAllDirectDebits">
+			<wsdl:input message="tns:RevokeAllDirectDebitsRequest" name="RevokeAllDirectDebitsRequest"/>
+			<wsdl:output message="tns:RevokeAllDirectDebitsResponse" name="RevokeAllDirectDebitsResponse"/>
+		</wsdl:operation>		
+		<wsdl:operation name="ListFailedPayments">
+			<wsdl:input message="tns:ListFailingDirectDebitsRequest" name="ListFailingDirectDebitsRequest"/>
+			<wsdl:output message="tns:ListFailingDirectDebitsResponse" name="ListFailingDirectDebitsResponse"/>
+		</wsdl:operation>		
+		<wsdl:operation name="RepresentFailedDirectDebit">
+			<wsdl:input message="tns:RepresentFailedDirectDebitRequest" name="RepresentFailedDirectDebitRequest"/>
+			<wsdl:output message="tns:RepresentFailedDirectDebitResponse" name="RepresentFailedDirectDebitResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="AddSinglePayment">
+			<wsdl:input message="tns:AddSinglePaymentRequest" name="AddSinglePaymentRequest"/>
+			<wsdl:output message="tns:AddSinglePaymentResponse" name="AddSinglePaymentResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="ReverseDirectdebit">
+			<wsdl:input message="tns:ReverseDirectdebitRequest" name="ReverseDirectdebitRequest"/>
+			<wsdl:output message="tns:ReverseDirectdebitResponse" name="ReverseDirectdebitResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="DirectdebitWsSoap11" type="tns:DirectdebitWs">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="ViewDirectDebit">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ViewDirectDebitRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ViewDirectDebitResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RevokeDirectdebit">
+			<soap:operation soapAction="" />
+			<wsdl:input name="RevokeDirectdebitRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="RevokeDirectdebitResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		<wsdl:operation name="CancelDirectdebit">
+			<soap:operation soapAction="" />
+			<wsdl:input name="CancelDirectdebitRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CancelDirectdebitResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ListDirectdebit">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ListDirectdebitRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ListDirectdebitResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		<wsdl:operation name="ActivateRevokedDirectDebit">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ActivateRevokedDirectDebitRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ActivateRevokedDirectDebitResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RevokeAllDirectDebits">
+			<soap:operation soapAction="" />
+			<wsdl:input name="RevokeAllDirectDebitsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="RevokeAllDirectDebitsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		<wsdl:operation name="ListFailedPayments">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ListFailingDirectDebitsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ListFailingDirectDebitsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RepresentFailedDirectDebit">
+			<soap:operation soapAction="" />
+			<wsdl:input name="RepresentFailedDirectDebitRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="RepresentFailedDirectDebitResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AddSinglePayment">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AddSinglePaymentRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddSinglePaymentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReverseDirectdebit">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ReverseDirectdebitRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ReverseDirectdebitResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+	</wsdl:binding>
+	
+	<wsdl:service name="DirectdebitWsService">
+		<wsdl:port binding="tns:DirectdebitWsSoap11" name="DirectdebitWsSoap11">
+			<soap:address location="http://localhost:8080/origix/ws/service" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

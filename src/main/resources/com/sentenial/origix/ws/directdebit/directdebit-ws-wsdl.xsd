@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:com:sentenial:origix:ws:directdebit-ws:wsdl"
+	xmlns:tns="urn:com:sentenial:origix:ws:directdebit-ws:wsdl"
+	xmlns:m="urn:com:sentenial:origix:ws:directdebit"
+	xmlns:mws="urn:com:sentenial:origix:ws:directdebit-ws"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:annotation>
+		<xs:documentation>
+			directdebit Web Services
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="urn:com:sentenial:origix:ws:directdebit" 
+		schemaLocation="directdebit.xsd" />
+	<xs:import namespace="urn:com:sentenial:origix:ws:directdebit-ws" 
+		schemaLocation="directdebit-ws.xsd" />
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:types" 
+		schemaLocation="../common/types.xsd" />
+	<xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" 
+		schemaLocation="../common/commontypes.xsd" />	
+
+</xs:schema>

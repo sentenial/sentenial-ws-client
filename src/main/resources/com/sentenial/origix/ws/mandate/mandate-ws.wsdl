@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+                  xmlns:tns="urn:com:sentenial:origix:ws:mandate-ws:wsdl" 
+                  xmlns:sch3="urn:com:sentenial:origix:ws:mandate-ws" 
+                  xmlns:sch2="urn:com:sentenial:origix:ws:mandate" 
+                  xmlns:sch1="urn:com:sentenial:origix:ws:common:types"
+                  xmlns:sch0="urn:com:sentenial:origix:ws:mandate-ws:wsdl" 
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                  targetNamespace="urn:com:sentenial:origix:ws:mandate-ws:wsdl">
+
+  <wsdl:types>
+    <xs:schema targetNamespace="urn:com:sentenial:origix:ws:mandate-ws:wsdl" xmlns:tns="urn:com:sentenial:origix:ws:mandate-ws:wsdl" xmlns:m="urn:com:sentenial:origix:ws:mandate" xmlns:mws="urn:com:sentenial:origix:ws:mandate-ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+      <xs:annotation>
+        <xs:documentation>Mandate Web Services</xs:documentation>
+      </xs:annotation>
+
+      <xs:import namespace="urn:com:sentenial:origix:ws:mandate" schemaLocation="mandate.xsd" />
+      <xs:import namespace="urn:com:sentenial:origix:ws:mandate-ws" schemaLocation="mandate-ws.xsd" />
+      <xs:import namespace="urn:com:sentenial:origix:ws:common:types" schemaLocation="../common/types.xsd" />
+      <xs:import namespace="urn:com:sentenial:origix:ws:common:commontypes" schemaLocation="../common/commontypes.xsd" />
+
+    </xs:schema>
+
+  </wsdl:types>
+  <wsdl:message name="AddMandateResponse">
+    <wsdl:part element="sch3:AddMandateResponse" name="AddMandateResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditMandateResponse">
+    <wsdl:part element="sch3:EditMandateResponse" name="EditMandateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewMandateResponse">
+    <wsdl:part element="sch3:ViewMandateResponse" name="ViewMandateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelMandateResponse">
+    <wsdl:part element="sch3:CancelMandateResponse" name="CancelMandateResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMandateRequest">
+    <wsdl:part element="sch3:AddMandateRequest" name="AddMandateRequest" />
+  </wsdl:message>
+  <wsdl:message name="EditMandateRequest">
+    <wsdl:part element="sch3:EditMandateRequest" name="EditMandateRequest" />
+  </wsdl:message>
+  <wsdl:message name="ViewMandateRequest">
+    <wsdl:part element="sch3:ViewMandateRequest" name="ViewMandateRequest" />
+  </wsdl:message>
+  <wsdl:message name="CancelMandateRequest">
+    <wsdl:part element="sch3:CancelMandateRequest" name="CancelMandateRequest" />
+  </wsdl:message>
+
+
+  <wsdl:message name="SuspendMandateRequest">
+    <wsdl:part element="sch3:SuspendMandateRequest" name="SuspendMandateRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReactivateSuspendedMandateRequest">
+    <wsdl:part element="sch3:ReactivateSuspendedMandateRequest" name="ReactivateSuspendedMandateRequest" />
+  </wsdl:message>
+  
+  <wsdl:message name="ActivateMandateRequest">
+    <wsdl:part element="sch3:ActivateMandateRequest" name="ActivateMandateRequest" />
+  </wsdl:message>
+
+
+
+  <wsdl:message name="SuspendMandateResponse">
+    <wsdl:part element="sch3:SuspendMandateResponse" name="SuspendMandateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReactivateSuspendedMandateResponse">
+    <wsdl:part element="sch3:ReactivateSuspendedMandateResponse" name="ReactivateSuspendedMandateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActivateMandateResponse">
+    <wsdl:part element="sch3:ActivateMandateResponse" name="ActivateMandateResponse" />
+  </wsdl:message>
+
+  <wsdl:portType name="MandateWs">
+    <wsdl:operation name="AddMandate">
+      <wsdl:input message="tns:AddMandateRequest" name="AddMandateRequest" />
+      <wsdl:output message="tns:AddMandateResponse" name="AddMandateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="EditMandate">
+      <wsdl:input message="tns:EditMandateRequest" name="EditMandateRequest" />
+      <wsdl:output message="tns:EditMandateResponse" name="EditMandateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewMandate">
+      <wsdl:input message="tns:ViewMandateRequest" name="ViewMandateRequest" />
+      <wsdl:output message="tns:ViewMandateResponse" name="ViewMandateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelMandate">
+      <wsdl:input message="tns:CancelMandateRequest" name="CancelMandateRequest" />
+      <wsdl:output message="tns:CancelMandateResponse" name="CancelMandateResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="SuspendMandate">
+      <wsdl:input message="tns:SuspendMandateRequest" name="SuspendMandateRequest" />
+      <wsdl:output message="tns:SuspendMandateResponse" name="SuspendMandateResponse" />
+    </wsdl:operation>
+
+
+    <wsdl:operation name="ReactivateSuspendedMandate">
+      <wsdl:input message="tns:ReactivateSuspendedMandateRequest" name="ReactivateSuspendedMandateRequest" />
+      <wsdl:output message="tns:ReactivateSuspendedMandateResponse" name="ReactivateSuspendedMandateResponse" />
+    </wsdl:operation>
+    
+    <wsdl:operation name="ActivateMandate">
+      <wsdl:input message="tns:ActivateMandateRequest" name="ActivateMandateRequest" />
+      <wsdl:output message="tns:ActivateMandateResponse" name="ActivateMandateResponse" />
+    </wsdl:operation>
+
+
+
+
+  </wsdl:portType>
+  <wsdl:binding name="MandateWsSoap11" type="tns:MandateWs">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddMandate">
+      <soap:operation soapAction="" />
+      <wsdl:input name="AddMandateRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AddMandateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditMandate">
+      <soap:operation soapAction="" />
+      <wsdl:input name="EditMandateRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="EditMandateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewMandate">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ViewMandateRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ViewMandateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMandate">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CancelMandateRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CancelMandateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+
+
+    <wsdl:operation name="SuspendMandate">
+      <soap:operation soapAction="" />
+      <wsdl:input name="SuspendMandateRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SuspendMandateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="ReactivateSuspendedMandate">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ReactivateSuspendedMandateRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReactivateSuspendedMandateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="ActivateMandate">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ActivateMandateRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ActivateMandateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    
+    
+  </wsdl:binding>
+  <wsdl:service name="MandateWsService">
+    <wsdl:port binding="tns:MandateWsSoap11" name="MandateWsSoap11">
+      <soap:address location="http://localhost:8080/origix/ws/service" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

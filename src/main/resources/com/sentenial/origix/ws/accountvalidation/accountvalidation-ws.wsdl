@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="urn:com:sentenial:origix:ws:accountvalidation-ws:wsdl" 
+	xmlns:sch1="urn:com:sentenial:origix:ws:accountvalidation-ws"	
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="urn:com:sentenial:origix:ws:accountvalidation-ws:wsdl" xmlns:p="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xs:schema targetNamespace="urn:com:sentenial:origix:ws:accountvalidation-ws:wsdl"
+			xmlns:tns="urn:com:sentenial:origix:ws:accountvalidation-ws:wsdl"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			<xs:annotation>
+				<xs:documentation>
+					Account Validation Web Services
+				</xs:documentation>
+			</xs:annotation>
+
+			<xs:import namespace="urn:com:sentenial:origix:ws:accountvalidation-ws"
+				schemaLocation="accountvalidation-ws.xsd" />
+			<xs:import namespace="urn:com:sentenial:origix:ws:common:types"
+				schemaLocation="../common/types.xsd" />
+			
+		</xs:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="ValidateIBANAccountRequest">
+		<wsdl:part element="sch1:ValidateIBANAccountRequest" name="ValidateIBANAccountRequest"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ValidateDomesticAccountRequest">
+		<wsdl:part element="sch1:ValidateDomesticAccountRequest" name="ValidateDomesticAccountRequest"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ValidateAccountResponse">
+		<wsdl:part element="sch1:ValidateAccountResponse" name="ValidateAccountResponse"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="AccountValidationWs">
+		
+		<wsdl:operation name="ValidateIBANAccount">
+			<wsdl:input message="tns:ValidateIBANAccountRequest" name="ValidateIBANAccountRequest"/>
+			<wsdl:output message="tns:ValidateAccountResponse" name="ValidateIBANAccountResponse"/>
+		</wsdl:operation>
+		
+		<wsdl:operation name="ValidateDomesticAccount">
+			<wsdl:input message="tns:ValidateDomesticAccountRequest" name="ValidateDomesticAccountRequest"/>
+			<wsdl:output message="tns:ValidateAccountResponse" name="ValidateDomesticAccountResponse"/>
+		</wsdl:operation>
+		
+	</wsdl:portType>
+		
+	<wsdl:binding name="AccountValidationWsSoap11" type="tns:AccountValidationWs">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="ValidateIBANAccount">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ValidateIBANAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ValidateIBANAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		<wsdl:operation name="ValidateDomesticAccount">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ValidateDomesticAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ValidateDomesticAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+	</wsdl:binding>
+	
+	<wsdl:service name="AccountValidationWsService">
+		<wsdl:port binding="tns:AccountValidationWsSoap11" name="AccountValidationWsSoap11">
+			<soap:address location="http://localhost:8080/origix/ws/service" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

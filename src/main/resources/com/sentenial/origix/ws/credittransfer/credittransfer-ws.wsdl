@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="urn:com:sentenial:origix:ws:credittransfer-ws:wsdl" 
+	xmlns:sch1="urn:com:sentenial:origix:ws:credittransfer-ws"	
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="urn:com:sentenial:origix:ws:credittransfer-ws:wsdl" xmlns:p="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xs:schema targetNamespace="urn:com:sentenial:origix:ws:credittransfer-ws:wsdl"
+			xmlns:tns="urn:com:sentenial:origix:ws:credittransfer-ws:wsdl"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			<xs:annotation>
+				<xs:documentation>
+					Credit Transfer Web Services
+				</xs:documentation>
+			</xs:annotation>
+
+			<xs:import namespace="urn:com:sentenial:origix:ws:credittransfer-ws"
+				schemaLocation="credittransfer-ws.xsd" />
+			<xs:import namespace="urn:com:sentenial:origix:ws:common:types"
+				schemaLocation="../common/types.xsd" />
+			
+		</xs:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="AddBeneficiaryRequest">
+		<wsdl:part element="sch1:AddBeneficiaryRequest" name="AddBeneficiaryRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="AddBeneficiaryResponse">
+		<wsdl:part element="sch1:AddBeneficiaryResponse" name="AddBeneficiaryResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="EditBeneficiaryRequest">
+		<wsdl:part element="sch1:EditBeneficiaryRequest" name="EditBeneficiaryRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="EditBeneficiaryResponse">
+		<wsdl:part element="sch1:EditBeneficiaryResponse" name="EditBeneficiaryResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ViewBeneficiaryRequest">
+		<wsdl:part element="sch1:ViewBeneficiaryRequest" name="ViewBeneficiaryRequest" />
+	</wsdl:message>
+	<wsdl:message name="ViewBeneficiaryResponse">
+		<wsdl:part element="sch1:ViewBeneficiaryResponse" name="ViewBeneficiaryResponse"  />
+	</wsdl:message>
+	
+	<wsdl:message name="AddCreditTransferRequest">
+		<wsdl:part element="sch1:AddCreditTransferRequest" name="AddCreditTransferRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="AddCreditTransferResponse">
+		<wsdl:part element="sch1:AddCreditTransferResponse" name="AddCreditTransferResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ViewCreditTransferRequest">
+		<wsdl:part element="sch1:ViewCreditTransferRequest" name="ViewCreditTransferRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="ViewCreditTransferResponse">
+		<wsdl:part element="sch1:ViewCreditTransferResponse" name="ViewCreditTransferResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ListCreditTransferRequest">
+		<wsdl:part element="sch1:ListCreditTransferRequest" name="ListCreditTransferRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="ListCreditTransferResponse">
+		<wsdl:part element="sch1:ListCreditTransferResponse" name="ListCreditTransferResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="RecallCreditTransferRequest">
+		<wsdl:part element="sch1:RecallCreditTransferRequest" name="RecallCreditTransferRequest"/>
+	</wsdl:message>	
+	<wsdl:message name="RecallCreditTransferResponse">
+		<wsdl:part element="sch1:RecallCreditTransferResponse" name="RecallCreditTransferResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ListFailedCreditTransferRequest">
+		<wsdl:part element="sch1:ListFailedCreditTransferRequest" name="ListFailedCreditTransferRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ListFailedCreditTransferResponse">
+		<wsdl:part element="sch1:ListFailedCreditTransferResponse" name="ListFailedCreditTransferResponse"/>
+	</wsdl:message>
+
+	
+	<wsdl:portType name="CreditTransferWs">
+		
+		<wsdl:operation name="AddBeneficiary">
+			<wsdl:input message="tns:AddBeneficiaryRequest" name="AddBeneficiaryRequest"/>
+			<wsdl:output message="tns:AddBeneficiaryResponse" name="AddBeneficiaryResponse"/>
+		</wsdl:operation>
+		
+		<wsdl:operation name="EditBeneficiary">
+			<wsdl:input message="tns:EditBeneficiaryRequest" name="EditBeneficiaryRequest"/>
+			<wsdl:output message="tns:EditBeneficiaryResponse" name="EditBeneficiaryResponse"/>
+		</wsdl:operation>
+		
+		<wsdl:operation name="ViewBeneficiary">
+			<wsdl:input message="tns:ViewBeneficiaryRequest" name="ViewBeneficiaryRequest"/>
+			<wsdl:output message="tns:ViewBeneficiaryResponse" name="ViewBeneficiaryResponse"/>
+		</wsdl:operation>
+		
+		<wsdl:operation name="AddCreditTransfer">
+			<wsdl:input message="tns:AddCreditTransferRequest" name="AddCreditTransferRequest"/>
+			<wsdl:output message="tns:AddCreditTransferResponse" name="AddCreditTransferResponse"/>
+		</wsdl:operation>
+		
+		<wsdl:operation name="ViewCreditTransfer">
+			<wsdl:input message="tns:ViewCreditTransferRequest" name="ViewCreditTransferRequest"/>
+			<wsdl:output message="tns:ViewCreditTransferResponse" name="ViewCreditTransferResponse"/>
+		</wsdl:operation>
+		
+		<wsdl:operation name="ListCreditTransfer">
+			<wsdl:input message="tns:ListCreditTransferRequest" name="ListCreditTransferRequest"/>
+			<wsdl:output message="tns:ListCreditTransferResponse" name="ListCreditTransferResponse"/>
+		</wsdl:operation>								
+		
+		<wsdl:operation name="RecallCreditTransfer">
+			<wsdl:input message="tns:RecallCreditTransferRequest" name="RecallCreditTransferRequest"/>
+			<wsdl:output message="tns:RecallCreditTransferResponse" name="RecallCreditTransferResponse"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="ListFailedCTPayments">
+			<wsdl:input message="tns:ListFailedCreditTransferRequest" name="ListFailedCreditTransferRequest"/>
+			<wsdl:output message="tns:ListFailedCreditTransferResponse" name="ListFailedCreditTransferResponse"/>
+		</wsdl:operation>
+		
+	</wsdl:portType>
+		
+	<wsdl:binding name="CreditTransferWsSoap11" type="tns:CreditTransferWs">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="AddBeneficiary">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AddBeneficiaryRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddBeneficiaryResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		<wsdl:operation name="EditBeneficiary">
+			<soap:operation soapAction="" />
+			<wsdl:input name="EditBeneficiaryRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="EditBeneficiaryResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ViewBeneficiary">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ViewBeneficiaryRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ViewBeneficiaryResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>	
+		<wsdl:operation name="AddCreditTransfer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AddCreditTransferRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddCreditTransferResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ViewCreditTransfer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ViewCreditTransferRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ViewCreditTransferResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ListCreditTransfer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ListCreditTransferRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ListCreditTransferResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RecallCreditTransfer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="RecallCreditTransferRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="RecallCreditTransferResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="ListFailedCTPayments">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ListFailedCreditTransferRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ListFailedCreditTransferResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+	</wsdl:binding>
+	
+	<wsdl:service name="CreditTransferWsService">
+		<wsdl:port binding="tns:CreditTransferWsSoap11" name="CreditTransferWsSoap11">
+			<soap:address location="http://localhost:8080/origix/ws/service" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
