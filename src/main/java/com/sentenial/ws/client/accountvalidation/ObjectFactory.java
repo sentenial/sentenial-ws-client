@@ -24,8 +24,9 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _PaymentScheduleResponse_QNAME = new QName("urn:com:sentenial:origix:ws:paymentschedule-ws", "PaymentScheduleResponse");
-    private final static QName _PaymentScheduleRequest_QNAME = new QName("urn:com:sentenial:origix:ws:paymentschedule-ws", "PaymentScheduleRequest");
+    private final static QName _BaseValidateIBANRequest_QNAME = new QName("urn:com:sentenial:origix:ws:accountvalidation-ws", "BaseValidateIBANRequest");
+    private final static QName _BaseValidateDomesticAccRequest_QNAME = new QName("urn:com:sentenial:origix:ws:accountvalidation-ws", "BaseValidateDomesticAccRequest");
+    private final static QName _BaseValidateAccResponse_QNAME = new QName("urn:com:sentenial:origix:ws:accountvalidation-ws", "BaseValidateAccResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.sentenial.ws.client.accountvalidation
@@ -35,11 +36,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EditPaymentScheduleResponse }
+     * Create an instance of {@link ValidateDomesticAccountRequest }
      * 
      */
-    public EditPaymentScheduleResponse createEditPaymentScheduleResponse() {
-        return new EditPaymentScheduleResponse();
+    public ValidateDomesticAccountRequest createValidateDomesticAccountRequest() {
+        return new ValidateDomesticAccountRequest();
+    }
+
+    /**
+     * Create an instance of {@link BaseValidateDomesticAccRequest }
+     * 
+     */
+    public BaseValidateDomesticAccRequest createBaseValidateDomesticAccRequest() {
+        return new BaseValidateDomesticAccRequest();
+    }
+
+    /**
+     * Create an instance of {@link ValidateAccountResponse }
+     * 
+     */
+    public ValidateAccountResponse createValidateAccountResponse() {
+        return new ValidateAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link BaseValidateAccResponse }
+     * 
+     */
+    public BaseValidateAccResponse createBaseValidateAccResponse() {
+        return new BaseValidateAccResponse();
+    }
+
+    /**
+     * Create an instance of {@link BaseValidateIBANRequest }
+     * 
+     */
+    public BaseValidateIBANRequest createBaseValidateIBANRequest() {
+        return new BaseValidateIBANRequest();
+    }
+
+    /**
+     * Create an instance of {@link ValidateIBANAccountRequest }
+     * 
+     */
+    public ValidateIBANAccountRequest createValidateIBANAccountRequest() {
+        return new ValidateIBANAccountRequest();
     }
 
     /**
@@ -51,14 +92,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MandateInfo }
-     * 
-     */
-    public MandateInfo createMandateInfo() {
-        return new MandateInfo();
-    }
-
-    /**
      * Create an instance of {@link PaymentScheduleInfo }
      * 
      */
@@ -67,35 +100,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DirectDebitInfo }
+     * Create an instance of {@link MandateInfo }
      * 
      */
-    public DirectDebitInfo createDirectDebitInfo() {
-        return new DirectDebitInfo();
-    }
-
-    /**
-     * Create an instance of {@link AddPaymentScheduleResponse }
-     * 
-     */
-    public AddPaymentScheduleResponse createAddPaymentScheduleResponse() {
-        return new AddPaymentScheduleResponse();
-    }
-
-    /**
-     * Create an instance of {@link EditPaymentScheduleRequest }
-     * 
-     */
-    public EditPaymentScheduleRequest createEditPaymentScheduleRequest() {
-        return new EditPaymentScheduleRequest();
-    }
-
-    /**
-     * Create an instance of {@link AddPaymentScheduleRequest }
-     * 
-     */
-    public AddPaymentScheduleRequest createAddPaymentScheduleRequest() {
-        return new AddPaymentScheduleRequest();
+    public MandateInfo createMandateInfo() {
+        return new MandateInfo();
     }
 
     /**
@@ -107,6 +116,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DirectDebitInfo }
+     * 
+     */
+    public DirectDebitInfo createDirectDebitInfo() {
+        return new DirectDebitInfo();
+    }
+
+    /**
      * Create an instance of {@link DirectDebit }
      * 
      */
@@ -115,21 +132,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PaymentScheduleResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BaseValidateIBANRequest }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "urn:com:sentenial:origix:ws:paymentschedule-ws", name = "PaymentScheduleResponse")
-    public JAXBElement<PaymentScheduleResponse> createPaymentScheduleResponse(PaymentScheduleResponse value) {
-        return new JAXBElement<PaymentScheduleResponse>(_PaymentScheduleResponse_QNAME, PaymentScheduleResponse.class, null, value);
+    @XmlElementDecl(namespace = "urn:com:sentenial:origix:ws:accountvalidation-ws", name = "BaseValidateIBANRequest")
+    public JAXBElement<BaseValidateIBANRequest> createBaseValidateIBANRequest(BaseValidateIBANRequest value) {
+        return new JAXBElement<BaseValidateIBANRequest>(_BaseValidateIBANRequest_QNAME, BaseValidateIBANRequest.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PaymentScheduleRequest }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BaseValidateDomesticAccRequest }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "urn:com:sentenial:origix:ws:paymentschedule-ws", name = "PaymentScheduleRequest")
-    public JAXBElement<PaymentScheduleRequest> createPaymentScheduleRequest(PaymentScheduleRequest value) {
-        return new JAXBElement<PaymentScheduleRequest>(_PaymentScheduleRequest_QNAME, PaymentScheduleRequest.class, null, value);
+    @XmlElementDecl(namespace = "urn:com:sentenial:origix:ws:accountvalidation-ws", name = "BaseValidateDomesticAccRequest")
+    public JAXBElement<BaseValidateDomesticAccRequest> createBaseValidateDomesticAccRequest(BaseValidateDomesticAccRequest value) {
+        return new JAXBElement<BaseValidateDomesticAccRequest>(_BaseValidateDomesticAccRequest_QNAME, BaseValidateDomesticAccRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BaseValidateAccResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "urn:com:sentenial:origix:ws:accountvalidation-ws", name = "BaseValidateAccResponse")
+    public JAXBElement<BaseValidateAccResponse> createBaseValidateAccResponse(BaseValidateAccResponse value) {
+        return new JAXBElement<BaseValidateAccResponse>(_BaseValidateAccResponse_QNAME, BaseValidateAccResponse.class, null, value);
     }
 
 }

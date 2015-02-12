@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
- *     &lt;extension base="{urn:com:sentenial:origix:ws:paymentschedule-ws}PaymentScheduleResponse">
+ *     &lt;extension base="{urn:com:sentenial:origix:ws:accountvalidation-ws}BaseValidateAccResponse">
  *       &lt;sequence>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -27,9 +27,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "EditPaymentScheduleResponse", namespace = "urn:com:sentenial:origix:ws:paymentschedule-ws")
-public class EditPaymentScheduleResponse
-    extends PaymentScheduleResponse
+@XmlRootElement(name = "ValidateAccountResponse", namespace = "urn:com:sentenial:origix:ws:accountvalidation-ws")
+public class ValidateAccountResponse
+    extends BaseValidateAccResponse
 {
 
 
