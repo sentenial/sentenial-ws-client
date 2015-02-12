@@ -68,7 +68,7 @@ final public class WsSettingsLoader {
         return settings;
     }
 
-    private static WsSettings parseProperties(Properties prop) {
+    static WsSettings parseProperties(Properties prop) {
         final WsSettings settings = new WsSettings();
         settings.setUsername(prop.getProperty(USERNAME_PROP));
         settings.setPassword(prop.getProperty(PASSWD_PROP));
