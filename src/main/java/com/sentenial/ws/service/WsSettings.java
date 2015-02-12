@@ -9,6 +9,7 @@ final class WsSettings {
     private String wsUrl;
     private String username;
     private String password;
+    private boolean debugEnabled = false;
 
     WsSettings() {}
 
@@ -42,11 +43,24 @@ final class WsSettings {
         this.password = password;
     }
 
+    public boolean isDebugEnabled() {
+        return debugEnabled;
+    }
+
+    public String getDebugEnabled() {
+        return debugEnabled + "";
+    }
+
+    public void setDebugEnabled(boolean debugEnabled) {
+        this.debugEnabled = debugEnabled;
+    }
+
     @Override
     public String toString() {
         return "WsSettings{" +
                 "wsUrl='" + wsUrl + '\'' +
                 ", username='" + username + '\'' +
+                ", debugEnabled=" + debugEnabled +
                 '}';
     }
 }

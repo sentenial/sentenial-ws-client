@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="file:/C:/DEVELOPMENT/workspace-comms-module/sentenial-ws-client/src/main/resources/com/sentenial/origix/ws/accountvalidation/accountvalidation-ws.wsdl" uri="wsdl/accountvalidation-ws.wsdl"/>
-    <system systemId="file:/C:/DEVELOPMENT/workspace-comms-module/sentenial-ws-client/src/main/resources/com/sentenial/origix/ws/accountvalidation/accountvalidation-ws.xsd" uri="wsdl/accountvalidation-ws.xsd"/>
-    <system systemId="file:/C:/DEVELOPMENT/workspace-comms-module/sentenial-ws-client/src/main/resources/com/sentenial/origix/ws/common/types.xsd" uri="common/types.xsd"/>
-    <system systemId="file:/C:/DEVELOPMENT/workspace-comms-module/sentenial-ws-client/src/main/resources/com/sentenial/origix/ws/common/commontypes.xsd" uri="common/commontypes.xsd"/>
-</catalog>
