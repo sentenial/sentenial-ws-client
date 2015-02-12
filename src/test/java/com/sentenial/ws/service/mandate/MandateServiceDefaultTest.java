@@ -1,54 +1,16 @@
-package com.sentenial.ws.client.mandate;
+package com.sentenial.ws.service.mandate;
 
-import com.sentenial.ws.client.AuthHandler;
-import com.sun.xml.ws.transport.http.client.HttpTransportPipe;
-import org.junit.Before;
+import com.sentenial.ws.client.mandate.*;
 import org.junit.Test;
 
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.handler.Handler;
-import javax.xml.ws.handler.HandlerResolver;
-import javax.xml.ws.handler.PortInfo;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import static org.junit.Assert.assertNotNull;
 
-/**
- * Copyright of Sentenial
- * User: christian.reichel
- */
-public class MandateWSClient {
-
-    private static final String WS_URL = "http://localhost:8080/origix-webservice/ws/services";
-
-    @Before
-    public void setUp(){
-        System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
-        System.setProperty("com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.dump", "true");
-        System.setProperty("com.sun.xml.ws.transport.http.HttpAdapter.dump", "true");
-        System.setProperty("com.sun.xml.internal.ws.transport.http.HttpAdapter.dump", "true");
-    }
+public class MandateServiceDefaultTest {
 
     @Test
-    public void addMandate() throws Exception{
-        HttpTransportPipe.dump = true;
-
-        final MandateWsService mandateWsService = new MandateWsService();
-        mandateWsService.setHandlerResolver(new HandlerResolver() {
-            @Override
-            public List<Handler> getHandlerChain(PortInfo portInfo) {
-                final List<Handler> handlerList = new ArrayList<Handler>();
-                handlerList.add(new AuthHandler("sampleuser", "123SecretPass"));
-                return handlerList;
-            }
-        });
-
-        //final MandateWs mandateWs = mandateWsService.getPort(MandateWs.class);
-        final MandateWs mandateWs = mandateWsService.getMandateWsSoap11();
-        final BindingProvider bindingProvider = (BindingProvider) mandateWs;
-        final Map<String, Object> req_ctx = bindingProvider.getRequestContext();
-        req_ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, WS_URL);
-        bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, WS_URL);
+    public void testAddMandate() throws Exception {
+        //Given
+        final MandateServiceDefault mandateServiceDefault = new MandateServiceDefault();
 
         final AddMandateRequest request = new AddMandateRequest();
         request.setMandate(new RequestMandate());
@@ -82,8 +44,10 @@ public class MandateWSClient {
         request.getMandate().setOmitPdf(false);
         request.getMandate().setSelfPrintMandate(true);
 
-        final AddMandateResponse response = mandateWs.addMandate(request);
+        //When
+        final AddMandateResponse response = mandateServiceDefault.addMandate(request);
+
+        //Then
+        assertNotNull(response.getMandate());
     }
-
 }
-
