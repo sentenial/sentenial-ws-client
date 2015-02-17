@@ -1,7 +1,6 @@
 
 package com.sentenial.ws.client.usermgmnt;
 
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -9,6 +8,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Holder;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
+import java.util.List;
 
 
 /**
