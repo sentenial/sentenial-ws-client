@@ -14,4 +14,21 @@ To use in maven as a dependency:
         <version>1.0.0</version>
     </dependency>
 
-## 
+## Settings
+To get started with NUAPAY you will can test using our sandbox credentials. You credentials can be set in two ways:
+
+### Option 1: Create these environment variables with your credentials and some options:
+
+    sentenial.ws.username
+    sentenial.ws.password
+    sentenial.ws.url
+    sentenial.ws.debug
+    
+
+### Option 2: Create a file called 'sentenial.properties'. Save these values inside this file:
+
+    sentenial.ws.username=YOUR_USERNAME
+    sentenial.ws.password=YOUR_PASSWORD
+    sentenial.ws.url=http://host:8080/origix-webservice/ws/services
+    sentenial.ws.debug=true #enables the message sent and received
+    
