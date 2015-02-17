@@ -25,7 +25,7 @@ To get started with NUAPAY you will can test using our sandbox credentials. You 
     sentenial.ws.debug
     
 
-### Option 2: Create a file called 'sentenial.properties'. Save these values inside this file:
+### Option 2: Create a file called `'sentenial.properties'`, then save these values inside this file:
 
     sentenial.ws.username=YOUR_USERNAME
     sentenial.ws.password=YOUR_PASSWORD
