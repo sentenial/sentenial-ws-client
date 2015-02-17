@@ -1,7 +1,5 @@
 package com.sentenial.ws.service;
 
-import com.sun.xml.ws.transport.http.client.HttpTransportPipe;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -18,7 +16,7 @@ final public class WsSettingsLoader {
     public static final String WSURL_PROP       = "sentenial.ws.url";
     public static final String DEBUG_PROP       = "sentenial.ws.debug";
 
-    //keeps here as a small performance improvement
+    //keep it here as a small performance improvement
     private static WsSettings settings = null;
 
     /**
@@ -26,10 +24,9 @@ final public class WsSettingsLoader {
      * @return
      */
     public static synchronized WsSettings loadSettings(){
-        //TODO: read from properties, environment, whatever...
         if(settings == null) {
             settings = getInformedSettings();
-            HttpTransportPipe.dump = settings.isDebugEnabled();
+            //HttpTransportPipe.dump = settings.isDebugEnabled();
             System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", settings.getDebugEnabled());
             System.setProperty("com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.dump", settings.getDebugEnabled());
             System.setProperty("com.sun.xml.ws.transport.http.HttpAdapter.dump", settings.getDebugEnabled());
