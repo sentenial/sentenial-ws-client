@@ -10,7 +10,7 @@ public class MandateServiceDefaultTest {
     @Test
     public void testAddMandate() throws Exception {
         //Given
-        final MandateServiceDefault mandateServiceDefault = new MandateServiceDefault();
+        final MandateService mandateService = new MandateServiceDefault();
 
         final AddMandateRequest request = new AddMandateRequest();
         request.setMandate(new RequestMandate());
@@ -45,9 +45,10 @@ public class MandateServiceDefaultTest {
         request.getMandate().setSelfPrintMandate(true);
 
         //When
-        final AddMandateResponse response = mandateServiceDefault.addMandate(request);
+        final AddMandateResponse response = mandateService.addMandate(request);
 
         //Then
         assertNotNull(response.getMandate());
     }
+
 }
