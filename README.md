@@ -30,5 +30,5 @@ To get started with NUAPAY you will can test using our sandbox credentials. You 
     sentenial.ws.username=YOUR_USERNAME
     sentenial.ws.password=YOUR_PASSWORD
     sentenial.ws.url=http://host:8080/origix-webservice/ws/services
-    sentenial.ws.debug=true #enables the message sent and received
+    sentenial.ws.debug=true #enables the message sent and received in the console
     
