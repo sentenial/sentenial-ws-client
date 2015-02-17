@@ -76,4 +76,7 @@ final public class WsSettingsLoader {
         return settings;
     }
 
+    public static ClassLoader getClassLoader(){
+        return Thread.currentThread().getContextClassLoader();
+    }
 }

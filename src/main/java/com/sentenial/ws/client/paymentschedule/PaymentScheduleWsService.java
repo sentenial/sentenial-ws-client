@@ -1,14 +1,11 @@
 
 package com.sentenial.ws.client.paymentschedule;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.sentenial.ws.service.WsSettingsLoader;
+
 import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import javax.xml.ws.WebEndpoint;
-import javax.xml.ws.WebServiceClient;
-import javax.xml.ws.WebServiceException;
-import javax.xml.ws.WebServiceFeature;
+import javax.xml.ws.*;
+import java.net.URL;
 
 
 /**
@@ -30,8 +27,8 @@ public class PaymentScheduleWsService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/christian.reichel/AppData/Local/Temp/tempdir1083674983883943298.tmp/paymentschedule-ws_1.wsdl");
-        } catch (MalformedURLException ex) {
+            url = WsSettingsLoader.getClassLoader().getResource("com/sentenial/origix/ws/paymentschedule/paymentschedule-ws.wsdl");
+        } catch (Exception ex) {
             e = new WebServiceException(ex);
         }
         PAYMENTSCHEDULEWSSERVICE_WSDL_LOCATION = url;
