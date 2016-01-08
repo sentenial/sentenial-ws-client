@@ -4,7 +4,7 @@ package com.sentenial.ws.service;
  * Copyright of Sentenial
  * User: christian.reichel
  */
-final class WsSettings {
+public final class WsSettings {
 
     private String wsUrl;
     private String username;

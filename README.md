@@ -15,7 +15,7 @@ To use in maven as a dependency:
     </dependency>
 
 ## Settings
-To get started with NUAPAY you will can test using our sandbox credentials. You credentials can be set in two ways:
+To get started with NUAPAY you can test using our sandbox credentials. Your credentials can be set in two ways:
 
 ### Option 1: Create these environment variables with your credentials and some options:
 
