@@ -1,4 +1,6 @@
-# Sentenial Web Services Client
+# Sentenial Web Services Client (deprecated)
+
+All integrations are now to use our REST APIs. See https://developer.nuapay.com
 
 ## Dependencies
 
